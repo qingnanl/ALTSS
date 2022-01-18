@@ -25,7 +25,7 @@ The way we compute the TSS enrichment is very simple. For a certain TSS in a giv
 - **P-reads** and **P-length** are the same thing for a user defined promoter region. The recommended length is 2000 bp;
 - **scale** is a scale factor, recommended to use 10000.
 
-In this method, we solely rely on the gene annotation (`refGene file`) for filtering out the genes that do not have alternative TSS. In other words, we only calculate the TSS enrichment score for genes with alternative TSS annotated. The way to calculate this score is simply inspired by the 'routine' quality control method for snATAC-seq data, which is to calculated the overall TSS enrichment score for a cell. The cells very low scores are recommended to be filtered out from further analysis. Here we expand this to each TSS.
+In this method, we solely rely on the gene annotation (`refGene file`) for filtering out the genes that do not have alternative TSS. In other words, we only calculate the TSS enrichment score for genes with alternative TSS annotated. The way to calculate this score is simply inspired by the 'routine' quality control method for snATAC-seq data, which is to calculate the overall TSS enrichment score for a cell. The cells very low scores are recommended to be filtered out from further analysis. Here we expand this to each individual TSS.
 
 ### System requirement and how to run this pipeline
 To run this pipeline, the followings are required:
