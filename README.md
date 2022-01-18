@@ -8,7 +8,24 @@ In some genes, researchers have observed that they have multiple TSSs (this phen
 
 Here, we develop a pipeline named ALTSS, aiming at using single-nuclei ATAC-seq data as the input and compute a TSS enrichment score for all the possible alternative TSSs, for each single cell. Currently, most single-cell RNA-seq data are 3'-end sequencing, which are not able to resolve the 5'-end in most cases. We reason that snATAC-seq would have a better resolution and coverage close to the TSS region of many genes, and thus it could be the right data type for this task. Of course, this pipeline works with 10x Multiome data with the "atac_fragments.tsv.gz".
 
-The way we compute the TSS enrichment 
+The way we compute the TSS enrichment is very simple. For a certain TSS in a given gene, the enrichment is calculated:
+
+![image](https://user-images.githubusercontent.com/53788946/149866315-bf715d79-4546-4eeb-b048-9ddcef83ad57.png)
+
+- **ES** is enrichment score; 
+- **T-norm** is normalized TSS region reads; 
+- **P-norm** is normalized promoter region reads, and:
+
+![image](https://user-images.githubusercontent.com/53788946/149866527-60aacc47-b2bf-475d-916b-a1356532e896.png)
+
+![image](https://user-images.githubusercontent.com/53788946/149866571-9a3902fa-e777-4135-9805-adca1f0bd6ee.png)
+
+- **T-reads** is the number of fragments (in the fragments.tsv.gz) overlapping with TSS region (user defined **T-length** bp region upstream of the tss; recommended 100 bp);
+- **T-length** is the defined length of TSS region, as mentioned above;
+- **P-reads** and **P-length** are the same thing for a user defined promoter region. The recommended length is 2000 bp;
+- **scale** is a scale factor, recommended to use 10000.
+
+In this method, we solely rely on the gene annotation (`refGene file`) for filtering out the genes that do not have alternative TSS. In other words, we only calculate the TSS enrichment score for genes with alternative TSS annotated. The way to calculate this score is simply inspired by the 'routine' quality control method for snATAC-seq data, which is to calculated the overall TSS enrichment score for a cell. The cells very low scores are recommended to be filtered out from further analysis. Here we expand this to each TSS.
 
 ### System requirement and how to run this pipeline
 To run this pipeline, the followings are required:
