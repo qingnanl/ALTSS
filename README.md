@@ -43,7 +43,7 @@ git clone https://github.com/qingnanl/ALTSS
 - `refGene file`; e.g., `hg38.refGene.txt.gz`; could be found http://hgdownload.cse.ucsc.edu/goldenPath/hg38/database/; it is strongly recommended to use the refGene files from this `'goldenPath'` resource, and others may not work due to their differences in organizing the data (basically, this pipeline is sensitive to the order of columns; however, if others have to be used and have issues, we can change the code in a reasonable time :grinning:)
 - `chrom.size file`; e.g., `hg38.chrom.sizes.txt`; available from https://hgdownload-test.gi.ucsc.edu/goldenPath/hg38/bigZips/hg38.chrom.sizes
 - `black list`; e.g., `hg38-blacklist.v2.bed.gz`; available here https://github.com/Boyle-Lab/Blacklist/tree/master/lists; it could be gzipped
-- `fragment file`; e.g., `fragments.tsv.gz`; this pipeline is only for 10x CellRanger-ATAC output
+- `fragment file`; e.g., `fragments.tsv.gz`; this pipeline is currently only for 10x CellRanger-ATAC output
 
 If you work with human hg38 data, the first three files could be found in the `~/ALTSS/data/` folder.
 
