@@ -53,11 +53,11 @@ sh ./sample.sh
 ```
 
 ### Output of this pipeline
-By default, this pipeline will give one output named 'dup_enrichment.csv'
+By default, this pipeline will give one output named 'dup_tss_enrichment.csv'
 
 It could be used for downstream analysis in R or python, for example in R:
 ```
-dup <- read.csv('dup_enrichment.csv', row.names = 1)
+dup <- read.csv('dup_tss_enrichment.csv', row.names = 1)
 head(dup[1:10, 1:20])
 ```
 ![image](https://user-images.githubusercontent.com/53788946/149873050-7e2b4467-c55c-4d14-9dab-5e5283af06e5.png)
