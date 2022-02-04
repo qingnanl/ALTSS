@@ -68,6 +68,7 @@ Each row is a cell barcode; each column is a gene-name_tss.
 The data could then be explored in many ways. For example, from the PBMC-3K-RNA+ATAC (10x Genomics) data, we found cells with preferences of using different TSSs for a housekeeping gene, *HSP90AB1*.
 
 This gene is shown to have four different transcripts with all different TSSs.
+
 ![image](https://user-images.githubusercontent.com/53788946/152613258-392f05c5-d07d-4575-91d0-6c04a3ebd9f1.png)
 
 For demonstration purposes, we split the cells to three groups based on the output of our pipeline ('dup_tss_enrichment.csv'). The first group (cond1) has preferences to use chr6:44246165 for *HSP90AB1*; the second group (cond2) has the preferences to use chr6:44247942; all the other cells form the third group (others). 
