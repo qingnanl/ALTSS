@@ -41,7 +41,6 @@ do
         n) python=${OPTARG};;
         v) tsv=${OPTARG};;
         b) black_list=${OPTARG};;
-        
     esac
 done
 
