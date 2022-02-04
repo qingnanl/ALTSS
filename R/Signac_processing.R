@@ -3,6 +3,7 @@
 # This is pretty much the same thing as the offcial Signac tutorial: https://satijalab.org/signac/articles/pbmc_multiomic.html 
 
 # read libraries
+# this is for hg38; change accordingly
 library(Signac)
 library(Seurat)
 library(EnsDb.Hsapiens.v86)
