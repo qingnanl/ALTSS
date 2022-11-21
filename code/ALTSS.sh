@@ -99,7 +99,8 @@ bedtools intersect -a $unzipped \
 done
 
 rm $unzipped
-rm ${output_dir}${item}.dup.blackfilter.bed
+rm ${output_dir}$promoter.dup.blackfilter.bed
+rm ${output_dir}$tss.dup.blackfilter.bed
 
 # step 3: calculate tss enrichment
 
