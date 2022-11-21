@@ -29,7 +29,7 @@
 # -b black list; e.g., hg38-blacklist.v2.bed.gz; available here https://github.com/Boyle-Lab/Blacklist/tree/master/lists; it could be gzipped
 # -a sample name; e.g., GSMxxxxx
 
-while getopts s:i:o:r:c:t:p:n:v:b: flag
+while getopts s:i:o:r:c:t:p:n:v:b:a: flag
 do
     case "${flag}" in
         s) script_dir=${OPTARG};;
