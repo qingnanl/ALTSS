@@ -27,6 +27,7 @@
 # -n python; which python interpreter to use; it must have pandas and numpy installed there
 # -v tsv file; usually fragments.tsv.gz file from 10x CellRanger pipeline
 # -b black list; e.g., hg38-blacklist.v2.bed.gz; available here https://github.com/Boyle-Lab/Blacklist/tree/master/lists; it could be gzipped
+# -a sample name; e.g., GSMxxxxx
 
 while getopts s:i:o:r:c:t:p:n:v:b: flag
 do
@@ -41,6 +42,7 @@ do
         n) python=${OPTARG};;
         v) tsv=${OPTARG};;
         b) black_list=${OPTARG};;
+        a) sample_name=${OPTARG};;
     esac
 done
 
@@ -49,6 +51,7 @@ done
 echo "script directory: $script_dir"
 echo "input directory: $input_dir"
 echo "output directory: $output_dir"
+echo "sample: $sample_name"
 
 # create output dir
 
@@ -92,7 +95,7 @@ bedtools intersect -a $unzipped \
                    -b ${output_dir}${item}.dup.blackfilter.bed \
                    -wa -wb | \
                    cut -f4,13,5 | \
-                   awk '{ k = $1 OFS $3 } { sum[k] += $2; count[k]++ } END{ for (i in sum) if (count[i] >= 1) print i, sum[i] }' > ${output_dir}${item}.dup.mtx.tsv
+                   awk '{ k = $1 OFS $3 } { sum[k] += $2; count[k]++ } END{ for (i in sum) if (count[i] >= 1) print i, sum[i] }' > ${output_dir}${sample_name}.${item}.dup.mtx.tsv
 done
 
 rm $unzipped
@@ -104,14 +107,14 @@ echo "using python: $python"
 echo "get genes with more than one TSS in $refGene"
 $python ${script_dir}ConvertMtx.py \
     -d $output_dir \
-    -t "tss.dup.mtx.tsv" \
-    -p "promoter.dup.mtx.tsv" \
+    -t ${sample_name}.tss.dup.mtx.tsv \
+    -p ${sample_name}.promoter.dup.mtx.tsv \
     -a $tss_size \
     -b $promoter_size \
     -s 500 \
     -r 1000 \
     -c 10000\
-    -n "dup_tss_enrichment.csv"\
+    -n ${sample_name}_dup_tss_enrichment.csv\
 
 # remove intermediate files
 rm ${output_dir}genes.bed
